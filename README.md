@@ -89,7 +89,7 @@ The model outputs the exact node-to-node sequence for each deployed truck and ca
 The reinforcement learning convergence profile is saved dynamically. It evaluates the optimization across training epochs (Score evolution, Distance reduction, and Waste minimization):
 
 <p align="center">
-  <img src="dashboard_apprentissage.jpg" alt="Learning Dashboard" width="550">
+  <img src="dashboard_apprentissage.png" alt="Learning Dashboard" width="550">
 </p>
 
 ### C. Geospatial Fleet Map (Optimized Routes)
