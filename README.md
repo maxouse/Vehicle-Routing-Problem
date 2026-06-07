@@ -76,27 +76,28 @@ The pipeline produces a comprehensive evaluation at the end of the execution, co
 The model outputs the exact node-to-node sequence for each deployed truck and calculates the global efficiency metrics directly in the console:
 
 ```text
-=== FLEET RESULT (SPLIT DELIVERY MULTI-VRP) ===
-Truck 1 : [DEPOT] -> Station 3 -> Station 1 -> [DEPOT]
-Truck 2 : [DEPOT] -> Station 2 -> Station 4 -> [DEPOT]
-
 === FLEET STATISTICS (KPIs) ===
--> Deployed trucks count : 2
--> Total mobilized capacity  : 1400 kg
--> Total delivered demand    : 1150 kg
--> Unused hydrogen           : 250 kg (Empty space in trailers)
--> Overall fill rate         : 82.1 %
+-> Deployed trucks count : 8
+-> Total distance traveled   : 1231.3 km
+-> Total mobilized capacity  : 5600 kg
+-> Total delivered demand    : 5600 kg
+-> Unused hydrogen           : 0 kg (Empty space in trailers)
+-> Overall fill rate         : 100 %
 ```
 
 ### B. Learning Diagnostics Dashboard
 The reinforcement learning convergence profile is saved dynamically. It evaluates the optimization across training epochs (Score evolution, Distance reduction, and Waste minimization):
 
-![Learning Dashboard](dashboard_apprentissage.png)
+<p align="center">
+  <img src="dashboard_apprentissage.jpg" alt="Learning Dashboard" width="550">
+</p>
 
 ### C. Geospatial Fleet Map (Optimized Routes)
 The final vehicle routing schedule is mapped into an interactive HTML layout powered by Folium. It plots green markers for production plants, blue markers for delivery stations, and colored overlay polylines matching individual truck journeys.
 
-[🗺️ Click here to download or view the interactive Route Map](carte_itineraires.html)
+<p align="center">
+  <img src="carte_itineraires.png" alt="Optimized Routes Map" width="700">
+</p>
 
 ---
 
