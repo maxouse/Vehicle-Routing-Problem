@@ -6,14 +6,19 @@ A Machine Learning pipeline designed to optimize multi-vehicle hydrogen distribu
 
 ## 1. Problem Statement & Logistics Context
 
-In the transition toward sustainable energy ecosystems, green hydrogen ($H_2$) distribution presents a high-stakes logistics bottleneck. Hydrogen possesses a low volumetric energy density, requiring high-pressure or cryogenic transportation in specialized tube trailers. Efficient fleet routing is paramount to minimize carbon footprints and operational costs.
+In the transition toward sustainable energy ecosystems, green hydrogen (H₂) distribution presents a high-stakes logistics bottleneck. Hydrogen possesses a low volumetric energy density, requiring high-pressure or cryogenic transportation in specialized tube trailers. Efficient fleet routing is paramount to minimize carbon footprints and operational costs.
 
-This project mathematically models the distribution network as a **Multi-Vehicle Routing Problem with Split Deliveries**:
-* **The Network:** Consists of multiple production sites (Depots/Sources) and a variable number of refueling stations scattered across a territory, each with a specific daily demand ($kg/day$).
-* **Fleet Constraints:** A fleet of transport trucks with fixed payload capacities ($700\text{ kg}$). 
+**The Initial Network State:**
+To understand the complexity of the geographic distribution, below is the raw geospatial layout of the production depots and demanding stations before optimization.
+[🌍 Click here to download or view the interactive H2 Network Map](carte_reseau_h2.html) 
+*(You can add a screenshot here by adding: `![Network Preview](votre_image_apercu.jpg)`)*
+
+This project mathematically models the distribution network as a **Multi-Vehicle Routing Problem with Split Deliveries (SDVRP)**:
+* **The Network:** Consists of multiple production sites (Depots/Sources) and a variable number of refueling stations scattered across a territory, each with a specific daily demand (kg/day).
+* **Fleet Constraints:** A fleet of heavy-duty transport trucks with fixed payload capacities (700 kg). 
 * **Split Deliveries:** If a single station's remaining demand exceeds a truck's available capacity, the truck delivers its remaining load, returns to a depot to refill, and another truck (or the same one on a subsequent trip) fulfills the remainder.
 * **Optimization Objectives:** 1. Minimize total fleet mileage (Distance Penalty).
-  2. Maximize the trailer fill-rate, minimizing "empty space" brought back to production plants (Hydrogen Waste/Capacity Penalty).
+  2. Maximize the trailer fill-rate, minimizing "empty space" brought back to production plants (Hydrogen Waste).
   3. Guarantee 100% demand fulfillment across all stations under strict multi-depot conditions.
 
 ---
@@ -63,16 +68,33 @@ To start training the agent on your dataset:
 
 ## 5. Industrial Performance Evaluation (KPIs)
 
-The pipeline produces two critical production-ready outputs at the end of execution:
+The pipeline produces a comprehensive evaluation at the end of the execution, combining raw terminal metrics and visualizations.
 
-### A. Learning Diagnostics Dashboard (`learning_dashboard.png`)
-Saves a high-resolution dashboard evaluating optimization convergence across epochs:
-1. **Total Reward:** Tracks the stabilization of the policy gradient score.
-2. **Distance Traveled:** Evaluates route compacting and mileage reduction.
-3. **Hydrogen Waste:** Highlights the minimization of trailer deadweight/empty space returns.
+### A. Routing Results & Fleet Statistics
+The model outputs the exact node-to-node sequence for each deployed truck and calculates the global efficiency metrics directly in the console:
 
-### B. Geospatial Fleet Map (`route_map.html`)
-Generates an interactive HTML layout powered by **Folium**. It plots green markers for active production plants, blue markers displaying real-time capacities for delivery stations, and colored overlay polylines matching individual truck journeys.
+```text
+=== FLEET RESULT (SPLIT DELIVERY MULTI-VRP) ===
+Truck 1 : [DEPOT] -> Station 3 -> Station 1 -> [DEPOT]
+Truck 2 : [DEPOT] -> Station 2 -> Station 4 -> [DEPOT]
+
+=== FLEET STATISTICS (KPIs) ===
+-> Deployed trucks count : 2
+-> Total mobilized capacity  : 1400 kg
+-> Total delivered demand    : 1150 kg
+-> Unused hydrogen           : 250 kg (Empty space in trailers)
+-> Overall fill rate         : 82.1 %
+```
+
+### B. Learning Diagnostics Dashboard
+The reinforcement learning convergence profile is saved dynamically. It evaluates the optimization across training epochs (Score evolution, Distance reduction, and Waste minimization):
+
+![Learning Dashboard](dashboard_apprentissage.jpg)
+
+### C. Geospatial Fleet Map (Optimized Routes)
+The final vehicle routing schedule is mapped into an interactive HTML layout powered by Folium. It plots green markers for production plants, blue markers for delivery stations, and colored overlay polylines matching individual truck journeys.
+
+[🗺️ Click here to download or view the interactive Route Map](carte_itineraires.html)
 
 ---
 
