@@ -9,9 +9,11 @@ A Machine Learning pipeline designed to optimize multi-vehicle hydrogen distribu
 In the transition toward sustainable energy ecosystems, green hydrogen (H₂) distribution presents a high-stakes logistics bottleneck. Hydrogen possesses a low volumetric energy density, requiring high-pressure or cryogenic transportation in specialized tube trailers. Efficient fleet routing is paramount to minimize carbon footprints and operational costs.
 
 **The Initial Network State:**
-To understand the complexity of the geographic distribution, below is the raw geospatial layout of the production depots and demanding stations before optimization.
-[🌍 Click here to download or view the interactive H2 Network Map](carte_reseau_h2.html) 
-*(You can add a screenshot here by adding: `![Network Preview](votre_image_apercu.jpg)`)*
+To understand the complexity of the geographic distribution, below is the raw geospatial layout of the production depots and demanding stations before optimization:
+
+<p align="center">
+  <img src="carte_reseau_h2.png" alt="Initial Hydrogen Network Map" width="700">
+</p>
 
 This project mathematically models the distribution network as a **Multi-Vehicle Routing Problem with Split Deliveries (SDVRP)**:
 * **The Network:** Consists of multiple production sites (Depots/Sources) and a variable number of refueling stations scattered across a territory, each with a specific daily demand (kg/day).
