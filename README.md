@@ -89,7 +89,7 @@ Truck 2 : [DEPOT] -> Station 2 -> Station 4 -> [DEPOT]
 ### B. Learning Diagnostics Dashboard
 The reinforcement learning convergence profile is saved dynamically. It evaluates the optimization across training epochs (Score evolution, Distance reduction, and Waste minimization):
 
-![Learning Dashboard](dashboard_apprentissage.jpg)
+![Learning Dashboard](dashboard_apprentissage.png)
 
 ### C. Geospatial Fleet Map (Optimized Routes)
 The final vehicle routing schedule is mapped into an interactive HTML layout powered by Folium. It plots green markers for production plants, blue markers for delivery stations, and colored overlay polylines matching individual truck journeys.
